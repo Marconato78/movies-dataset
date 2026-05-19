@@ -3,13 +3,13 @@ import pandas as pd
 import streamlit as st
 
 # Show the page title and description.
-st.set_page_config(page_title="Movies dataset", page_icon="🎬")
-st.title("🎬 Movies dataset")
+st.set_page_config(page_title="Dataset de películas", page_icon="🎬")
+st.title("🎬 Dataset de películas")
 st.write(
     """
-    This app visualizes data from [The Movie Database (TMDB)](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
-    It shows which movie genre performed best at the box office over the years. Just 
-    click on the widgets below to explore!
+    Esta aplicación visualiza datos de [The Movie Database (TMDB)](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
+    Muestra qué género cinematográfico rindió mejor en taquilla a lo largo de los años. Simplemente
+    haz clic en los controles a continuación para explorar.
     """
 )
 
@@ -26,13 +26,13 @@ df = load_data()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
 genres = st.multiselect(
-    "Genres",
+    "Géneros",
     df.genre.unique(),
     ["Action", "Adventure", "Biography", "Comedy", "Drama", "Horror"],
 )
 
 # Show a slider widget with the years using `st.slider`.
-years = st.slider("Years", 1986, 2006, (2000, 2016))
+years = st.slider("Años", 1986, 2016, (2000, 2016))
 
 # Filter the dataframe based on the widget input and reshape it.
 df_filtered = df[(df["genre"].isin(genres)) & (df["year"].between(years[0], years[1]))]
@@ -46,7 +46,7 @@ df_reshaped = df_reshaped.sort_values(by="year", ascending=False)
 st.dataframe(
     df_reshaped,
     use_container_width=True,
-    column_config={"year": st.column_config.TextColumn("Year")},
+    column_config={"year": st.column_config.TextColumn("Año")},
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
@@ -57,8 +57,8 @@ chart = (
     alt.Chart(df_chart)
     .mark_line()
     .encode(
-        x=alt.X("year:N", title="Year"),
-        y=alt.Y("gross:Q", title="Gross earnings ($)"),
+        x=alt.X("year:N", title="Año"),
+        y=alt.Y("gross:Q", title="Recaudación bruta ($)"),
         color="genre:N",
     )
     .properties(height=320)
