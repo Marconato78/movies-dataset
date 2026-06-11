@@ -1,14 +1,9 @@
 # 🎬 Movies Dataset Template
+https://movies-dataset-template.streamlit.app/
 
 Plantilla de aplicación web desarrollada con **Streamlit** para visualizar y explorar conjuntos de datos de películas.
 
 El proyecto sirve como ejemplo de referencia para la creación de aplicaciones analíticas ligeras utilizando Python y Streamlit, proporcionando una estructura sencilla que puede reutilizarse como base para proyectos de visualización de datos.
-
-<p align="center">
-  <a href="https://movies-dataset-template.streamlit.app/">
-    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit">
-  </a>
-</p>
 
 ---
 
